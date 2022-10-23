@@ -1,0 +1,36 @@
+logging:
+  path: /Users/jiasong.pi/java/log
+  level:
+    root: info
+    com.snail: debug
+#数据库连接配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://myHost:3306/wechat_platform?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai
+    username: dev
+    password: 123456
+  redis:
+    #数据库索引
+    database: 0
+    host: redisHost
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        #最大连接数
+        max-active: 8
+        #最大阻塞等待时间(负数表示没限制)
+        max-wait: -1
+        #最大空闲
+        max-idle: 8
+        #最小空闲
+        min-idle: 0
+        #连接超时时间
+    timeout: 10000
+
+#通用配置
+common:
+  #环境配置
+  env: 0 #环境，0测试，1正式，2预发布
+

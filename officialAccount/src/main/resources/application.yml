@@ -1,0 +1,47 @@
+#启用环境配置(开发、测试、预发、生产)
+spring:
+  profiles:
+    active: dev
+  redis:
+    lettuce:
+      pool:
+        max-active: 50 #连接池最大连结束
+        max-wait: 2000ms  #连接池最大阻塞等待时间
+        max-idle: 30  #连接池中最大空闲链接
+        min-idle: 10  #连接池中最小空闲链接
+    timeout: 3000ms
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      db-type: mysql
+      initial-size: 8
+      max-active: 32
+      min-idle: 8
+      max-wait: 10000
+    #      test-while-idle: true
+    #      test-on-borrow: false
+    #      test-on-return: false
+    #      remove-abandoned: true
+    #      remove-abandoned-timeout: 80
+    #      time-between-eviction-runs-millis: 600000
+    #      min-evictable-idle-time-millis: 300000
+#程序端口
+server:
+  port: 8888
+
+logging:
+  path: /home/log
+  level:
+    root: info
+    com.snail: info
+
+  #MyBatis
+mybatis:
+  #  type-aliases-package: com.xiaoying.pay.card_nonp2p_srv.domain
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+wechat:
+  appID: wx3ea35b1b4ba178c6
+  secret: de5f91f457bc7861ba0a40355e0f5686
+  token: pijiasong757
+  encodingAESKey: ySTT0ccBF6tIjbhwmlGRp7SBZn7nokmQEj196298u2Y
